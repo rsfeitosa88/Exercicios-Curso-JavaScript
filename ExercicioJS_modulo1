@@ -1,0 +1,174 @@
+// Exercícios do modulo 1 do curso de JavaScript - curso programação Web completo da cod3R
+
+/* Exercício 1 - Crie uma função que dado dois valores (passados como parâmetros) mostre no 
+console a soma, subtração, multiplicação e divisão desses valores.*/
+
+soma = (n1, n2) => {
+    return n1 + n2
+}
+
+console.log(soma (1,2))
+
+
+/* Exercício 2 - Os triângulos podem ser classificados em 3 tipos quanto ao tamanho de seus lados:
+
+Equilátero: Os três lados são iguais. 
+Isósceles: Dois lados iguais. 
+Escaleno: Todos os lados são diferentes.
+
+Crie uma função que recebe os comprimentos dos três lados de um triângulo e retorne sua classificação quanto
+ao tamanho de seus lados. (Neste exemplo deve-se abstrair as condições matemáticas de existência de um
+triângulo).*/
+
+function classificacao (lado1, lado2, lado3) {
+    if (lado1 == lado2 && lado1 == lado3){
+        console.log("Equilátero")
+    } else if (lado1 != lado2 && lado1 != lado3 && lado2 != lado3) {
+        console.log("Escaleno")
+    } else {
+        console.log("Isósceles")
+    }
+}
+
+classificacao(4, 4, 4) // Equilátero
+classificacao(5, 4, 4) // Isósceles
+classificacao(4, 5, 4) // Isósceles
+classificacao(4, 4, 5) // Isósceles
+classificacao(5, 4, 3) // Escaleno
+
+classTriangulo = (lado1, lado2, lado3) => {
+    if (lado1 == lado2 && lado1 == lado3){
+        console.log("Equilátero")
+    } else if (lado1 != lado2 && lado1 != lado3 && lado2 != lado3) {
+        console.log("Escaleno")
+    } else {
+        console.log("Isósceles")
+    }
+}
+
+console.log("\n")
+classTriangulo(4, 4, 4) // Equilátero
+classTriangulo(5, 4, 4) // Isósceles
+classTriangulo(4, 5, 4) // Isósceles
+classTriangulo(4, 4, 5) // Isósceles
+classTriangulo(5, 4, 3) // Escaleno
+
+/ Exercício 3 - Crie uma função que recebe dois parâmetros, base e expoente, e retorne a base elevada ao expoente
+
+resultadoExpente = (base, expoente) =>{
+    return console.log(`${base}^${expoente} =`, Math.pow(base,expoente)) // ou base ** expoente
+}
+
+resultadoExpente(5, 3)
+
+/* Exercício 4 - Crie uma função que irá receber dois valores, o dividendo e o divisor. A função deverá imprimir o resultado
+e o resto da divisão destes dois valores*/
+
+divisao = (num1, num2) => console.log(`${num1}/${num2} =`, num1/num2, "\nResto =", num1%num2, "\n")
+
+divisao(10, 5)
+divisao(11, 5)
+divisao(30, 3)
+
+/* Exercício 5 - Lidar com números em JavaScript pode dar muita dor de cabeça. Você já viu o que acontece quando faz o
+seguinte comando no console: console.log(0.1 + 0.2); O resultado será: 0.30000000000000004. Outra coisa
+importante de observar, é o fato que o ponto é utilizado no lugar da vírgula e vice versa. Com isso, vamos fazer
+um exercício simples para mostrar dinheiro sempre da forma correta. Desenvolva uma função JavaScript para
+que ela receba um valor como 0.30000000000000004 e retorne R$0,30 (observe a vírgula e o ponto)*/
+
+
+valorReal = (valor) => {
+    valor = valor.toFixed(2)
+    valor = valor.replace('.',',')
+    console.log("R$ " + valor)
+}
+valorReal(0.30000000000000004)
+
+/* Exercício 6 - Elabore duas funções que recebem três parâmetros: capital inicial, taxa de juros e tempo de aplicação. A
+primeira função retornará o montante da aplicação financeira sob o regime de juros simples e a segunda
+retornará o valor da aplicação sob o regime de juros compostos.*/
+
+JurosSimples = (capInicial, taxJuros, tpAplicacao) =>{
+    capSimples = capInicial*taxJuros*tpAplicacao
+    capSimples = capSimples.toFixed(2)
+    capSimples = capSimples.replace('.',',')
+    console.log(`\nCapitalizção Simples: R$ ${capSimples}`)
+}
+
+JurosComposto = (capInicial, taxJuros, tpAplicacao) =>{
+    capComposta = capInicial*(1+taxJuros)^tpAplicacao
+    capComposta = capComposta.toFixed(2)
+    capComposta = capComposta.replace('.',',')
+    console.log(`\nCapitalizção Composta: R$ ${capComposta}`)
+}
+
+JurosComposto(8000.44, 8, 6)
+JurosSimples(5000.98, 8, 6)
+
+/* Exercício 7 - Uma das vantagens da programação é a automatização de tarefas que não gostamos de realizar. Dito isto,
+elabore uma função cujo objetivo é resolver a fórmula de Bhaskara. Para isso, sua função deve receber três
+parâmetros, “ax2”, “bx” e “c”, de tal modo que na equação: 3x² - 5x + 12 os valores seriam respectivamente: 3,
+-5, 12. Como retorno deve ser passado um vetor que tem 2 valores um para cada possível resultado, mesmo
+que os resultados sejam iguais. Caso o delta seja negativo, retorne, ao invés do vetor, um string com a frase:
+“Delta é negativo”.*/
+
+formDelta = (ax2, bx, c) => {
+    let bquadrado = bx ** 2 // ** potencia
+    let delta = bquadrado - (4 * ax2 * (c))
+    if (delta < 0) {
+        return console.log("Delta é negativo, não é possivel continuar...")
+    } else {
+        a_2 = 2*ax2
+        let x = [(- bx + Math.sqrt(delta))/a_2, ((- bx - Math.sqrt(delta))/a_2)]
+        console.log(`Resultado Delta: ${delta}`)
+        console.log(`Resultado X': ${x[0]}`)
+        console.log(`Resultado X'': ${x[1]}`)    
+        }
+    }
+
+formDelta(2,12,-14) // delta: 100
+
+
+/* Exercício 8 - Pedro joga N jogos de basquete por temporada. Para saber como está ele está progredindo, ele mantém
+registro de todos os as pontuações feitas por jogo. Após cada jogo ele anota no novo valor e confere se o
+mesmo é maior ou menor que seu melhor e pior desempenho. Dada uma lista string = “pontuação1 pontuação2
+pontuação3 etc..”, escreva uma função que ao recebê-la irá comparar os valores um a um e irá retornar um
+vetor com o número de vezes que ele bateu seu recorde de maior número de pontos e quando fez seu pior
+jogo. (Número do pior jogo).
+Obs.: O primeiro jogo não conta como novo recorde do melhor.
+Exemplo:
+String: “10 20 20 8 25 3 0 30 1”
+Retorno: [3, 7] (Significa que ele bateu três vezes seu recorde de melhor pontuação e a pior pontuação
+aconteceu no sétimo jogo.)*/
+function contadorIndice (x){
+
+    for (i in x){
+    }
+    return i
+}
+
+function desempenho (x) {
+    let pontoMax = x[0]
+    let pontoMin = x[0]
+    let qtdRecorde = 0
+    let jogo = 0
+    let cont = 0
+    
+    cont = contadorIndice(x)
+
+    for (let i = 1; i <= cont; i++){
+        if (pontoMax < x[i]){
+            qtdRecorde = qtdRecorde + 1
+            pontoMax = x[i]
+        }else if (pontoMin > x[i]){
+            pontoMin = x[i]
+            jogo = i + 1
+        }
+    }
+
+    console.log(`Resultado de desempenho: \n\nQuantidade de recordes = ${qtdRecorde}\nPior desempenho = No ${jogo} jogo`)
+    
+}
+
+joao = [10, 20, 20, 8, 25, 3, 0, 30, 1]
+desempenho (joao)
