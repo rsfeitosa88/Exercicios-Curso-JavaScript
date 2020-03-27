@@ -172,3 +172,81 @@ function desempenho (x) {
 
 joao = [10, 20, 20, 8, 25, 3, 0, 30, 1]
 desempenho (joao)
+
+
+/* Exercício 9 - Construa uma função para um sistema de notas de uma instituição que possui a seguinte política de
+classificação: Todo aluno recebe uma nota de 0 a 100. Alunos com nota abaixo de 40 são reprovados. As notas
+possuem a seguinte regra de arredondamento: Se a diferença entre a nota e o próximo múltiplo de 5 for menor
+que 3, arredondar a nota para esse próximo múltiplo de 5. Se a nota for abaixo de 38, não é feito nenhum
+arredondamento pois esta nota resulta na reprovação do aluno. Por exemplo, a nota 84 será arredondada para
+85, mas a nota 29 não será arredondada por ser abaixo de 40 e não ser possível arredondamento eficiente, ou
+seja, que evite a reprovação do aluno. No caso de a nota ser 38, o arredondamento é possível pois atingirá 40
+e o aluno será aprovado. */
+
+aprovaAluno = (x1,x2) => { 
+    
+    console.log("Resultado dos Aulunos: \n")
+    
+    for ( let i in x2){
+        if (x2[i] >= 38){
+            x2[i] = Math.ceil(x2[i]/5)*5
+            console.log (`O aluno ${x1[i]} está aprovado com a nota ${x2[i]}`)
+        } else 
+            console.log(`O aluno ${x1[i]} foi reprovado com a nota ${x2[i]}`)
+    }
+}
+
+let aluno = ["Alberto", "Bruno", "Carla", "Fernando"]
+let nota = [98, 38, 28, 55]
+
+aprovaAluno(aluno, nota)
+
+// Exerc´cio 10 - Crie uma função que verifica se um número inteiro passado como parêmetro é divisível por 3 e retorne true ou false
+
+verificaDiv3 = (x) =>{
+    console.log(!(x % 3 || 0))
+}
+
+num = 9
+num2 = 4
+
+verificaDiv3(num)
+verificaDiv3(num2)
+
+/* Exercício 10 - As regras para o cálculo dos anos bissextos são as seguintes:
+De 4 em 4 anos é ano bissexto;
+De 100 em 100 anos não é ano bissexto;
+De 400 em 400 anos é ano bissexto;
+Prevalecem as últimas regras sobre as primeiras.
+Partindo daí elabore uma função que recebe um ano e calcula se ele é ano bissexto, imprimindo no console a
+mensagem e retornando true ou false. */
+
+eAnoBissexto = (x) => {
+    
+    /*
+    console.log("Ano:", x,"\nResto da divisão por 400:",x % 400,"\nResto da divisão por 100:", x % 100, "\nResto da divisão por 4:", x % 4)
+    if (x % 400 == 0 ){
+        console.log("Ano é bissexto?", true) 
+    } else if (x % 100 == 0) {
+        console.log("Ano é bissexto?", false) 
+    } else if ( x % 4 == 0) {
+        console.log("Ano é bissexto?", true)
+    } else
+    console.log("Ano é bissexto?", false) */
+
+    // ou ... (o melhor código)
+    
+    console.log("Ano:", x,"\nResto da divisão por 400:",x % 400,"\nResto da divisão por 100:", x % 100, "\nResto da divisão por 4:", x % 4)
+    console.log("Ano Bissexto? ",!!(x % 400 == 0 && x % 100 != 0 || x % 4 == 0 && x % 100 != 0),"\n")
+    
+    // o booleano acima verifica os multiplos de 400 e 4 com a afirmativa de não ser multiplo de 100, se forem multiplos de 100 será false. Ou se não forem multiplos de 4 e 400 mas ser de 100.
+}
+
+eAnoBissexto(100) // False
+eAnoBissexto(200) // false
+eAnoBissexto(9) // false
+eAnoBissexto(8) // true
+eAnoBissexto(1004) // true
+eAnoBissexto(2020) // true
+eAnoBissexto(2000) // false
+
