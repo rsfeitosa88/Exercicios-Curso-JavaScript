@@ -236,7 +236,10 @@ eAnoBissexto = (x) => {
 
     // ou ... (o melhor código)
     
+    // contra prova:
     console.log("Ano:", x,"\nResto da divisão por 400:",x % 400,"\nResto da divisão por 100:", x % 100, "\nResto da divisão por 4:", x % 4)
+    
+    // teste booleano:
     console.log("Ano Bissexto? ",!!(x % 400 == 0 && x % 100 != 0 || x % 4 == 0 && x % 100 != 0),"\n")
     
     // o booleano acima verifica os multiplos de 400 e 4 com a afirmativa de não ser multiplo de 100, se forem multiplos de 100 será false. Ou se não forem multiplos de 4 e 400 mas ser de 100.
